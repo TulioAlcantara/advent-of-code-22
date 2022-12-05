@@ -49,7 +49,6 @@
 
 // Find the top three Elves carrying the most Calories. How many Calories are those Elves carrying in total?
 
-
 import readInput from "../utils/fileReader";
 
 const main = async () => {

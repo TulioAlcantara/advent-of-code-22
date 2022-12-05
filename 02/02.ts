@@ -42,7 +42,6 @@
 
 // Following the Elf's instructions for the second column, what would your total score be if everything goes exactly according to your strategy guide?
 
-
 import readInput from "../utils/fileReader";
 
 const possibleMoves = new Map();
@@ -66,8 +65,6 @@ possibleMovesPart2.set("B Z", 9)
 possibleMovesPart2.set("C X", 2)
 possibleMovesPart2.set("C Y", 6)
 possibleMovesPart2.set("C Z", 7)
-
-
 
 const main = async () => {
     const guide = await readInput("../02/input.txt");
