@@ -39,22 +39,36 @@
 
 // Find the Elf carrying the most Calories. How many total Calories is that Elf carrying?
 
+// --- Part Two ---
+
+// By the time you calculate the answer to the Elves' question, they've already realized that the Elf carrying the most Calories of food might eventually run out of snacks.
+
+// To avoid this unacceptable situation, the Elves would instead like to know the total Calories carried by the top three Elves carrying the most Calories. That way, even if one of those Elves runs out of snacks, they still have two backups.
+
+// In the example above, the top three Elves are the fourth Elf (with 24000 Calories), then the third Elf (with 11000 Calories), then the fifth Elf (with 10000 Calories). The sum of the Calories carried by these three elves is 45000.
+
+// Find the top three Elves carrying the most Calories. How many Calories are those Elves carrying in total?
+
+
 import readInput from "../utils/fileReader";
 
 const main = async () => {
     const caloriesArray = await readInput("../01/input.txt");
-    let maxCalories = 0;
     let currentCalories = 0;
+    let listOfTotalCalories = [] as number[];
 
     caloriesArray.forEach((calories: string) => {
         if (calories === '') {
-            maxCalories = currentCalories > maxCalories ? currentCalories : maxCalories;
-            currentCalories = 0;
+            listOfTotalCalories.push(currentCalories);
+            currentCalories = 0
         }
         currentCalories += Number(calories);
+
     });
 
-    console.log(maxCalories)
+    listOfTotalCalories = listOfTotalCalories.sort((a, b) => b - a);
+    console.log("TOP THREE CALORIES:", listOfTotalCalories.slice(0, 3));
+    console.log("TOP THREE CALORIES SUM:", listOfTotalCalories.slice(0, 3).reduce((a, b) => a + b, 0));
 }
 
 main()
