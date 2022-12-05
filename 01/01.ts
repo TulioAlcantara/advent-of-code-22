@@ -39,28 +39,21 @@
 
 // Find the Elf carrying the most Calories. How many total Calories is that Elf carrying?
 
-
-const { readFileSync, promises: fsPromises } = require('fs');
-
-const readInput = async () => {
-    const data = await fsPromises.readFile('./input.txt', 'utf8');
-    const arr = data.split("\n");
-    return arr;
-
-}
+import readInput from "../utils/fileReader";
 
 const main = async () => {
-    const caloriesArray = await readInput();
+    const caloriesArray = await readInput("../01/input.txt");
     let maxCalories = 0;
     let currentCalories = 0;
 
-    caloriesArray.forEach((calories) => {
+    caloriesArray.forEach((calories: string) => {
         if (calories === '') {
             maxCalories = currentCalories > maxCalories ? currentCalories : maxCalories;
             currentCalories = 0;
         }
         currentCalories += Number(calories);
     });
+
     console.log(maxCalories)
 }
 
